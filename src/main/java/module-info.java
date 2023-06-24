@@ -3,8 +3,9 @@ module com.stealthywhispergui {
     requires javafx.fxml;
     requires java.datatransfer;
     requires java.desktop;
+    requires java.prefs;
 
 
-    opens com.stealthywhispergui to javafx.fxml;
-    exports com.stealthywhispergui;
+    opens com.traube.stealthywhispergui to javafx.fxml;
+    exports com.traube.stealthywhispergui;
 }
