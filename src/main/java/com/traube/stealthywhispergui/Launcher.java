@@ -1,4 +1,4 @@
-package com.stealthywhispergui;
+package com.traube.stealthywhispergui;
 
 public class Launcher {
     public static void main(String[] args) {
