@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.traube.stealthywhispergui.StealthyWhisperController">
+   <Button fx:id="settingsButton" alignment="TOP_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0"
+           layoutX="540.0" layoutY="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false"
+           onAction="#switchToSettings" styleClass="settings-button" stylesheets="@stealthy-whisper.css"
+           text="Settings">
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+      <font>
+         <Font size="1.0"/>
+      </font>
+   </Button>
+   <Text layoutX="119.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stealthy Whisper"
+         textAlignment="CENTER">
+      <font>
+         <Font name="Arial" size="48.0"/>
+      </font>
+   </Text>
+   <TextField fx:id="visibleMessageTextField" layoutX="30.0" layoutY="120.0" prefHeight="30.0" prefWidth="540.0"
+              styleClass="input-text-field" stylesheets="@stealthy-whisper.css">
+      <cursor>
+         <Cursor fx:constant="TEXT"/>
+      </cursor>
+      <font>
+         <Font name="Arial" size="14.0"/>
+      </font>
+   </TextField>
+   <Button fx:id="visibleMsgCopyButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="547.0"
+           layoutY="127.0" mnemonicParsing="false" onAction="#visibleMsgCopyButton" prefHeight="16.0" prefWidth="16.0"
+           styleClass="copy-button" stylesheets="@stealthy-whisper.css" text="Button">
+      <font>
+         <Font size="1.0"/>
+      </font>
+   </Button>
+   <TextField fx:id="hiddenMessageTextField" layoutX="30.0" layoutY="180.0" prefHeight="30.0" prefWidth="540.0"
+              styleClass="input-text-field" stylesheets="@stealthy-whisper.css">
+      <font>
+         <Font name="Arial" size="14.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="TEXT"/>
+      </cursor>
+   </TextField>
+   <Button fx:id="hiddenMsgCopyButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="547.0"
+           layoutY="187.0" mnemonicParsing="false" onAction="#hiddenMsgCopyButton" prefHeight="16.0" prefWidth="16.0"
+           styleClass="copy-button" stylesheets="@stealthy-whisper.css" text="Button">
+      <font>
+         <Font size="1.0"/>
+      </font>
+   </Button>
+   <TextField fx:id="encodedMessageTextField" editable="false" layoutX="30.0" layoutY="240.0" prefHeight="30.0"
+              prefWidth="540.0" styleClass="input-text-field" stylesheets="@stealthy-whisper.css">
+      <font>
+         <Font name="Arial" size="14.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="TEXT"/>
+      </cursor>
+   </TextField>
+   <Button fx:id="encodedMsgCopyButton" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="547.0"
+           layoutY="247.0" mnemonicParsing="false" onAction="#encodedMsgCopyButton" prefHeight="16.0" prefWidth="16.0"
+           styleClass="copy-button" stylesheets="@stealthy-whisper.css" text="Button">
+      <font>
+         <Font size="1.0"/>
+      </font>
+   </Button>
+   <HBox layoutX="30.0" layoutY="300.0" prefHeight="30.0" prefWidth="540.0" spacing="30.0">
+      <Button mnemonicParsing="false" onAction="#encrypt" prefHeight="30.0" prefWidth="500.0" text="Encrypt">
+         <font>
+            <Font name="Arial" size="14.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#decrypt" prefHeight="30.0" prefWidth="500.0" text="Decrypt">
+         <font>
+            <Font name="Arial" size="14.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#clear" prefHeight="30.0" prefWidth="500.0" text="Clear">
+         <font>
+            <Font name="Arial" size="14.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+   </HBox>
+   <Text layoutX="30.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visible Message">
+      <font>
+         <Font name="Arial" size="16.0"/>
+      </font>
+   </Text>
+   <Text layoutX="30.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hidden Message">
+      <font>
+         <Font name="Arial" size="16.0"/>
+      </font>
+   </Text>
+   <Text layoutX="30.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Encoded Message">
+      <font>
+         <Font name="Arial" size="16.0"/>
+      </font>
+   </Text>
+</AnchorPane>

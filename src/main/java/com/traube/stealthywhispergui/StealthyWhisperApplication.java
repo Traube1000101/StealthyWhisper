@@ -19,16 +19,15 @@ public class StealthyWhisperApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("stealthy-whisper-main.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("stealthy-whisper.fxml")));
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stealthy-whisper-main.css")).toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stealthy-whisper.css")).toExternalForm());
 
+            stage.setScene(scene);
             Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("app-icon.png")));
             stage.getIcons().add(icon);
-
             stage.setTitle("Stealthy Whisper");
             stage.setResizable(false);
-            stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
             throw new IOException("Error: ", e);

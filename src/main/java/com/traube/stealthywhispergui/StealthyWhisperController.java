@@ -42,7 +42,7 @@ public class StealthyWhisperController {
     }
 
     final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
-    public void encrypt(ActionEvent e) {
+    public void encrypt() {
         String visibleMessage = visibleMessageTextField.getText();
         String hiddenMessage = hiddenMessageTextField.getText();
 
@@ -53,11 +53,11 @@ public class StealthyWhisperController {
         hiddenMessageTextField.pseudoClassStateChanged(errorClass, hiddenMessage.isEmpty());
 
         if (!(visibleMessage.isEmpty() || hiddenMessage.isEmpty())) {
-            encodedMessageTextField.setText(StealthyWhisperAlgorithm.insertMessage(visibleMessage, hiddenMessage));
+            encodedMessageTextField.setText(StealthyWhisperAlgorithm.insertMessage(visibleMessage, StealthyWhisperAlgorithm.encodeMessage(hiddenMessage)));
         }
     }
 
-    public void decrypt(ActionEvent e) {
+    public void decrypt() {
         visibleMessageTextField.setText("");
         hiddenMessageTextField.setText("");
         resetError();
@@ -73,7 +73,7 @@ public class StealthyWhisperController {
         }
     }
 
-    public void clear(ActionEvent e) {
+    public void clear() {
         encodedMessageTextField.setText("");
         visibleMessageTextField.setText("");
         hiddenMessageTextField.setText("");
@@ -87,7 +87,7 @@ public class StealthyWhisperController {
     }
 
     public void switchToSettings(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("stealthy-whisper-settings.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("settings.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -98,18 +98,18 @@ public class StealthyWhisperController {
     public void switchToMain(ActionEvent event) throws IOException {
         SettingsManager.saveSetting("cipherKey", cipherKeyTextField.getText());
 
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("stealthy-whisper-main.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("stealthy-whisper.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void visibleMsgCopyButton(ActionEvent e) { copyFunction(visibleMessageTextField); }
+    public void visibleMsgCopyButton() { copyFunction(visibleMessageTextField); }
 
-    public void hiddenMsgCopyButton(ActionEvent e) { copyFunction(hiddenMessageTextField); }
+    public void hiddenMsgCopyButton() { copyFunction(hiddenMessageTextField); }
 
-    public void encodedMsgCopyButton(ActionEvent e) { copyFunction(encodedMessageTextField); }
+    public void encodedMsgCopyButton() { copyFunction(encodedMessageTextField); }
 
     void copyFunction(TextField messageTextField) {
         messageTextField.requestFocus();

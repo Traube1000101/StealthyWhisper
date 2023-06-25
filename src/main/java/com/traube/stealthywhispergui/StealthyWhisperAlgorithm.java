@@ -19,13 +19,14 @@ public class StealthyWhisperAlgorithm {
 
     public static char invisibleDelimiter = '\u2061'; // Function Application
 
-    public static String insertMessage(String visibleMessage, String secretMessage) {
+    public static String insertMessage(String visibleMessage, String encodedMessage) {
         // Split visibleMessage randomly into 2 parts
-
         int splitIndex = (int) (Math.random() * (visibleMessage.length() - 2) + 1);
         String firstPart = visibleMessage.substring(0, splitIndex);
         String secondPart = visibleMessage.substring(splitIndex);
-        return firstPart + encodeMessage(secretMessage) + secondPart;
+
+        // Insert encodedMessage between the 2 parts
+        return firstPart + encodedMessage + secondPart;
     }
 
     public static String encodeMessage (String message) {
@@ -51,6 +52,7 @@ public class StealthyWhisperAlgorithm {
     }
 
     public static String[] decodeMessage(String encodedMessage) {
+        //
         AtomicReference<String> output = new AtomicReference<>("");
 
         ArrayList<String> segments = new ArrayList<>(Arrays.asList(encodedMessage.split(String.valueOf(invisibleDelimiter))));

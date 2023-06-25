@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.traube.stealthywhispergui.StealthyWhisperController">
+   <Button fx:id="settingsButton" alignment="TOP_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0"
+           layoutX="540.0" layoutY="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false"
+           onAction="#switchToMain" styleClass="settings-button" stylesheets="@stealthy-whisper.css" text="Settings">
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+      <font>
+         <Font size="1.0"/>
+      </font>
+   </Button>
+   <Text layoutX="119.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stealthy Whisper"
+         textAlignment="CENTER">
+      <font>
+         <Font name="Arial" size="48.0"/>
+      </font>
+   </Text>
+   <TextField fx:id="cipherKeyTextField" layoutX="30.0" layoutY="120.0" prefHeight="30.0" prefWidth="540.0"
+              promptText="If a Key is entered, Messages are en-/decrypted with it" styleClass="input-text-field"
+              stylesheets="@stealthy-whisper.css">
+      <cursor>
+         <Cursor fx:constant="TEXT"/>
+      </cursor>
+      <font>
+         <Font name="Arial" size="14.0"/>
+      </font>
+   </TextField>
+   <Text layoutX="30.0" layoutY="115.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Secret Key">
+      <font>
+         <Font name="Arial" size="16.0"/>
+      </font>
+   </Text>
+</AnchorPane>
