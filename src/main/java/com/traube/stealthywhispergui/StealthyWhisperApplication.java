@@ -6,9 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class StealthyWhisperApplication extends Application {
 
@@ -19,7 +22,15 @@ public class StealthyWhisperApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("stealthy-whisper.fxml")));
+            Locale locale = new Locale(SettingsManager.getSetting("locale", Locale.getDefault().getCountry()));
+            ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setResources(langBundle);
+            loader.setLocation(Objects.requireNonNull(getClass().getResource("stealthy-whisper.fxml")));
+
+            Parent root = loader.load();
+
             Scene scene = new Scene(root);
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stealthy-whisper.css")).toExternalForm());
 
@@ -28,6 +39,7 @@ public class StealthyWhisperApplication extends Application {
             stage.getIcons().add(icon);
             stage.setTitle("Stealthy Whisper");
             stage.setResizable(false);
+            stage.initStyle(StageStyle.DECORATED);
             stage.show();
         } catch (Exception e) {
             throw new IOException("Error: ", e);

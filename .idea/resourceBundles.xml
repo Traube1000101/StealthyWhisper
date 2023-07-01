@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ResourceBundleManager">
+    <file url="file://$PROJECT_DIR$/src/main/resources/com/traube/bundles/lang_de.properties" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/com/traube/bundles/lang_yama.properties" />
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/main/resources/com/traube/bundles/lang_de.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/resources/com/traube/bundles/lang_yama.properties" />
+      <base-name>lang</base-name>
+    </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/main/resources/com/traube/bundles/lang_de.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/resources/com/traube/bundles/lang_en.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/resources/com/traube/bundles/lang_yama.properties" />
+      <base-name>lang</base-name>
+    </custom-resource-bundle>
+  </component>
+</project>
