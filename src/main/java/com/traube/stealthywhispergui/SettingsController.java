@@ -15,6 +15,8 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static com.traube.stealthywhispergui.StealthyWhisperApplication.loader;
+
 public class SettingsController {
     @FXML
     AnchorPane anchorPane;
@@ -38,7 +40,7 @@ public class SettingsController {
         SettingsManager.saveSetting("cipherKey", cipherKeyTextField.getText());
 
         Locale locale = new Locale(SettingsManager.getSetting("locale", Locale.getDefault().getCountry()));
-        FXMLLoader loader = new FXMLLoader();
+        loader = new FXMLLoader();
 
         loader.setResources(ResourceBundle.getBundle("com.traube.bundles.lang", locale));
         loader.setLocation(Objects.requireNonNull(getClass().getResource("stealthy-whisper.fxml")));

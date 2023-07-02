@@ -4,6 +4,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -18,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import static com.traube.stealthywhispergui.StealthyWhisperApplication.loader;
 
 public class StealthyWhisperController {
     @FXML AnchorPane anchorPane;
@@ -82,22 +85,38 @@ public class StealthyWhisperController {
     }
 
     public void switchToSettings(ActionEvent event) throws IOException {
+        loadScene(event, getClass().getResource("settings.fxml"));
+    }
+
+    void loadScene(ActionEvent event, URL sceneUrl) throws IOException {
         // Switch to settings scene
         Locale locale = new Locale(SettingsManager.getSetting("locale", Locale.getDefault().getCountry()));
-        ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
 
-        FXMLLoader loader = new FXMLLoader();
-        loader.setResources(langBundle);
+        loader = new FXMLLoader();
+        loader.setResources(ResourceBundle.getBundle("com.traube.bundles.lang", locale));
         loader.setLocation(Objects.requireNonNull(getClass().getResource("settings.fxml")));
         root = loader.load();
 
-        //root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("settings.fxml")));
+        stage = new Stage();
+
+        /* // Use when triggered by menu item
+        if (event != null) {
+            MenuItem menuItem = (MenuItem) event.getSource();
+            scene = menuItem.getParentPopup().getOwnerWindow().getScene();
+            stage = (Stage) scene.getWindow();
+
+        }
+         */
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        // cipherKeyTextField.setText(SettingsManager.getSetting("cipherKey", "test"));
     }
+
+    void loadScene(URL sceneUrl) throws IOException { loadScene(null,sceneUrl); }
+
+    void loadScene(ActionEvent event) throws IOException { loadScene(event, loader.getLocation()); }
 
     public void visibleMsgCopyButton() { copyFunction(visibleMessageTextField); }
 

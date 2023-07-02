@@ -19,13 +19,15 @@ public class StealthyWhisperApplication extends Application {
         launch(args);
     }
 
+    public static FXMLLoader loader;
+
     @Override
     public void start(Stage stage) throws IOException {
         try {
             Locale locale = new Locale(SettingsManager.getSetting("locale", Locale.getDefault().getCountry()));
             ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
 
-            FXMLLoader loader = new FXMLLoader();
+            loader = new FXMLLoader();
             loader.setResources(langBundle);
             loader.setLocation(Objects.requireNonNull(getClass().getResource("stealthy-whisper.fxml")));
 

@@ -65,7 +65,7 @@ public class StealthyWhisperAlgorithm {
         }
         String[] visibleMessage = new String[2];
 
-        visibleMessage[1] = segments.get(lastIndex).substring(lastDigitIndex + 1);
+        visibleMessage[1] = segments.get(lastIndex).substring(lastDigitIndex - 1);
         segments.set(lastIndex, segments.get(lastIndex).substring(0, lastDigitIndex + 1));
 
         visibleMessage[0] = segments.remove(0);
