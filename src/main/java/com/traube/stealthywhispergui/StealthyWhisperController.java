@@ -4,7 +4,6 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Objects;
@@ -85,11 +84,11 @@ public class StealthyWhisperController {
         encodedMessageTextField.pseudoClassStateChanged(errorClass, false);
     }
 
-    public void switchToSettings(ActionEvent event) throws IOException {
+    public void switchToSettings(ActionEvent event) {
             loadScene(event, getClass().getResource("settings.fxml"));
     }
 
-    public static void loadScene(ActionEvent event, URL sceneUrl) throws IOException {
+    public static void loadScene(ActionEvent event, URL sceneUrl) {
         try {
 
         // Switch to settings scene
@@ -122,9 +121,9 @@ public class StealthyWhisperController {
         }
     }
 
-    static void loadScene(URL sceneUrl) throws IOException { loadScene(null,sceneUrl); }
+    static void loadScene(URL sceneUrl) { loadScene(null,sceneUrl); }
 
-    void loadScene(ActionEvent event) throws IOException { loadScene(event, globalLoader.getLocation()); }
+    void loadScene(ActionEvent event) { loadScene(event, globalLoader.getLocation()); }
 
     public void visibleMsgCopyButton() { copyFunction(visibleMessageTextField); }
 
