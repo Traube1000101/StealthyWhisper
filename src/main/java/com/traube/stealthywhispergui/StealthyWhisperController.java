@@ -4,6 +4,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Objects;
@@ -20,7 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import static com.traube.stealthywhispergui.StealthyWhisperApplication.loader;
+import static com.traube.stealthywhispergui.StealthyWhisperApplication.globalLoader;
 
 public class StealthyWhisperController {
     @FXML AnchorPane anchorPane;
@@ -31,9 +32,9 @@ public class StealthyWhisperController {
 
 
     // Variables for switching scenes
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    private static Stage stage;
+    private static Scene scene;
+    private static Parent root;
 
     @FXML public void initialize() {
         anchorPane.setOnMouseClicked(event -> anchorPane.requestFocus());
@@ -85,21 +86,25 @@ public class StealthyWhisperController {
     }
 
     public void switchToSettings(ActionEvent event) throws IOException {
-        loadScene(event, getClass().getResource("settings.fxml"));
+            loadScene(event, getClass().getResource("settings.fxml"));
     }
 
-    void loadScene(ActionEvent event, URL sceneUrl) throws IOException {
+    public static void loadScene(ActionEvent event, URL sceneUrl) throws IOException {
+        try {
+
         // Switch to settings scene
         Locale locale = new Locale(SettingsManager.getSetting("locale", Locale.getDefault().getCountry()));
 
-        loader = new FXMLLoader();
-        loader.setResources(ResourceBundle.getBundle("com.traube.bundles.lang", locale));
-        loader.setLocation(Objects.requireNonNull(getClass().getResource("settings.fxml")));
-        root = loader.load();
+        globalLoader = new FXMLLoader();
+        ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
+        globalLoader.setResources(langBundle);
+        globalLoader.setLocation(Objects.requireNonNull(StealthyWhisperController.class.getResource("settings.fxml")));
+        root = globalLoader.load();
 
         stage = new Stage();
 
-        /* // Use when triggered by menu item
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        /* // Use when triggered by menu item instead of button
         if (event != null) {
             MenuItem menuItem = (MenuItem) event.getSource();
             scene = menuItem.getParentPopup().getOwnerWindow().getScene();
@@ -107,16 +112,19 @@ public class StealthyWhisperController {
 
         }
          */
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        } catch (IOException e) {
+            Throwable cause = e.getCause();
+            cause.printStackTrace();
+        }
     }
 
-    void loadScene(URL sceneUrl) throws IOException { loadScene(null,sceneUrl); }
+    static void loadScene(URL sceneUrl) throws IOException { loadScene(null,sceneUrl); }
 
-    void loadScene(ActionEvent event) throws IOException { loadScene(event, loader.getLocation()); }
+    void loadScene(ActionEvent event) throws IOException { loadScene(event, globalLoader.getLocation()); }
 
     public void visibleMsgCopyButton() { copyFunction(visibleMessageTextField); }
 

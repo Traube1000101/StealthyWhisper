@@ -19,7 +19,9 @@ public class StealthyWhisperApplication extends Application {
         launch(args);
     }
 
-    public static FXMLLoader loader;
+    public static FXMLLoader globalLoader;
+
+    public static Stage stage;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -27,11 +29,11 @@ public class StealthyWhisperApplication extends Application {
             Locale locale = new Locale(SettingsManager.getSetting("locale", Locale.getDefault().getCountry()));
             ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
 
-            loader = new FXMLLoader();
-            loader.setResources(langBundle);
-            loader.setLocation(Objects.requireNonNull(getClass().getResource("stealthy-whisper.fxml")));
+            globalLoader = new FXMLLoader();
+            globalLoader.setResources(langBundle);
+            globalLoader.setLocation(Objects.requireNonNull(getClass().getResource("stealthy-whisper.fxml")));
 
-            Parent root = loader.load();
+            Parent root = globalLoader.load();
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stealthy-whisper.css")).toExternalForm());
