@@ -16,7 +16,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -40,6 +42,7 @@ public class StealthyWhisperController {
     }
 
     final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
+
     public void encrypt() {
         String visibleMessage = visibleMessageTextField.getText();
         String hiddenMessage = hiddenMessageTextField.getText();
@@ -51,7 +54,7 @@ public class StealthyWhisperController {
         hiddenMessageTextField.pseudoClassStateChanged(errorClass, hiddenMessage.isEmpty());
 
         if (!(visibleMessage.isEmpty() || hiddenMessage.isEmpty())) {
-            encodedMessageTextField.setText(StealthyWhisperAlgorithm.insertMessage(visibleMessage, StealthyWhisperAlgorithm.encodeMessage(hiddenMessage)));
+            encodedMessageTextField.setText(StealthyWhisperAlgorithm.insertMessage(visibleMessage, StealthyWhisperAlgorithm.encodeMessage(hiddenMessage, (byte)1)));
         }
     }
 
@@ -65,9 +68,14 @@ public class StealthyWhisperController {
         else {
             encodedMessageTextField.pseudoClassStateChanged(errorClass, false);
             String encodedMessage = encodedMessageTextField.getText();
-            String[] messages = StealthyWhisperAlgorithm.decodeMessage(encodedMessage);
-            hiddenMessageTextField.setText(messages[0]);
-            visibleMessageTextField.setText(messages[1]);
+            try {
+                String[] messages = StealthyWhisperAlgorithm.decodeMessage(encodedMessage);
+                hiddenMessageTextField.setText(messages[0]);
+                visibleMessageTextField.setText(messages[1]);
+            }
+            catch (Exception e) {
+                infoBox(e.getMessage(), "Error");
+            }
         }
     }
 
@@ -136,5 +144,26 @@ public class StealthyWhisperController {
         StringSelection stringSelection = new StringSelection(messageTextField.getText());
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(stringSelection, null);
+    }
+
+    public static void infoBox(String infoMessage, String titleBar)
+    {
+        /* By specifying a null headerMessage String, we cause the dialog to
+           not have a header */
+        infoBox(infoMessage, titleBar, null);
+    }
+
+    public static void infoBox(String infoMessage, String titleBar, String headerMessage)
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titleBar);
+        alert.setHeaderText(headerMessage);
+        alert.setContentText(infoMessage);
+        // add icon to alert box
+        Image icon = new Image(Objects.requireNonNull(StealthyWhisperController.class.getResourceAsStream("app-icon.png")));
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(icon);
+
+        alert.showAndWait();
     }
 }

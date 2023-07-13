@@ -8,4 +8,5 @@ module com.stealthywhispergui {
 
     opens com.traube.stealthywhispergui to javafx.fxml;
     exports com.traube.stealthywhispergui;
+
 }

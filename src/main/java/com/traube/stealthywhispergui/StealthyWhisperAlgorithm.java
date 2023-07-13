@@ -1,8 +1,6 @@
 package com.traube.stealthywhispergui;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class StealthyWhisperAlgorithm {
@@ -29,9 +27,12 @@ public class StealthyWhisperAlgorithm {
         return firstPart + encodedMessage + secondPart;
     }
 
-    public static String encodeMessage (String message) {
-        // Check if Cipher Key is set
+    public static String encodeMessage (String message, byte type) {
+
+        // Check if Cipher Key is set and then encrypts the message
         String cipherKey = SettingsManager.getSetting("cipherKey", "");
+        // Add type to the beginning of the message
+        message = (char)type + message;
         if (!Objects.equals(cipherKey, "")) {
             // If Cipher Key is set, use it to encrypt the message
             message = StealthyWhisperCipher.encrypt(message, cipherKey);
@@ -51,10 +52,8 @@ public class StealthyWhisperAlgorithm {
         return octal.toString();
     }
 
-    public static String[] decodeMessage(String encodedMessage) {
-        //
+    public static String[] decodeMessage(String encodedMessage) throws Exception {
         AtomicReference<String> output = new AtomicReference<>("");
-
         ArrayList<String> segments = new ArrayList<>(Arrays.asList(encodedMessage.split(String.valueOf(invisibleDelimiter))));
         int lastIndex = segments.size() - 1;
         int lastDigitIndex = 0;
@@ -85,6 +84,16 @@ public class StealthyWhisperAlgorithm {
             output.set(StealthyWhisperCipher.decrypt(output.get(), cipherKey));
         }
 
-        return new String[]{output.get(), visibleMessage[0] + visibleMessage[1]};
+        byte type = (byte)output.get().substring(0, 1).charAt(0);
+        if (type == (byte)1) {
+            return new String[]{output.get().substring(1), visibleMessage[0] + visibleMessage[1]};
+        }
+        else {
+            Locale locale = new Locale(SettingsManager.getSetting("locale", Locale.getDefault().getCountry()));
+            ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
+            throw new Exception(langBundle.getString("general.error.unsupported_message_type"));
+        }
+
+
     }
 }

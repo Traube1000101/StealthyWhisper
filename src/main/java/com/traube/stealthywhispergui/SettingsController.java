@@ -12,12 +12,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.*;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 import static com.traube.stealthywhispergui.StealthyWhisperApplication.globalLoader;
 
@@ -25,9 +24,7 @@ public class SettingsController {
     @FXML
     AnchorPane anchorPane;
 
-    // Settings Scene
     @FXML private TextField cipherKeyTextField;
-
     @FXML private ChoiceBox languageSelector;
 
     // Variables for switching scenes
@@ -35,8 +32,7 @@ public class SettingsController {
     private Scene scene;
     private Parent root;
 
-    private List<Locale> supportedLocales = new ArrayList<>();
-    private String savedLanguageCode; // Language code retrieved from SettingsManager
+    private final List<Locale> supportedLocales = new ArrayList<>();
 
     @FXML
     public void initialize() throws NoSuchFieldException, IllegalAccessException {
@@ -47,7 +43,8 @@ public class SettingsController {
         // Language Selector
         populateSupportedLocales();
 
-        savedLanguageCode = SettingsManager.getSetting("locale", "de"); // Retrieve the saved language code
+        // Language code retrieved from SettingsManager
+        String savedLanguageCode = SettingsManager.getSetting("locale", "de"); // Retrieve the saved language code
 
         // Set the initially selected item based on the saved language
         for (Locale locale : supportedLocales) {
@@ -70,13 +67,13 @@ public class SettingsController {
         );
     }
 
-    private void populateSupportedLocales() throws NoSuchFieldException, IllegalAccessException {
+    private void populateSupportedLocales() {
         supportedLocales.add(Locale.forLanguageTag("de"));
         supportedLocales.add(Locale.forLanguageTag("en"));
         supportedLocales.add(new Locale("yama"));
 
         // Loads all the available languages of the lang bundle
-        // Doesn't work when compiled into a JAR file
+        // Sadly doesn't work when compiled into a JAR file
         /*
         try {
             URL resourceURL = getClass().getClassLoader().getResource("com/traube/bundles");
