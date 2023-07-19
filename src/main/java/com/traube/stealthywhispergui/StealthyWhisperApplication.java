@@ -23,6 +23,8 @@ public class StealthyWhisperApplication extends Application {
 
     public static Stage stage;
 
+    String version = "1.0.0";
+
     @Override
     public void start(Stage stage) throws IOException {
         try {
@@ -41,7 +43,7 @@ public class StealthyWhisperApplication extends Application {
             stage.setScene(scene);
             Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("app-icon.png")));
             stage.getIcons().add(icon);
-            stage.setTitle("Stealthy Whisper");
+            stage.setTitle("StealthyWhisper v" + version);
             stage.setResizable(false);
             stage.initStyle(StageStyle.DECORATED);
             stage.show();

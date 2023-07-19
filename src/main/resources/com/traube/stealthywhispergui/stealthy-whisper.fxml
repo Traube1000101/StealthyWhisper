@@ -17,7 +17,7 @@
          <Font size="1.0" />
       </font>
    </Button>
-   <Text layoutX="119.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stealthy Whisper" textAlignment="CENTER">
+   <Text layoutX="125.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StealthyWhisper" textAlignment="CENTER">
       <font>
          <Font name="Arial" size="48.0" />
       </font>

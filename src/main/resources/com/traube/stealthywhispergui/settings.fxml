@@ -45,4 +45,9 @@
          <ChoiceBox fx:id="languageSelector" prefHeight="30.0" prefWidth="400.0" />
       </children>
    </HBox>
+   <Text layoutX="125.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StealthyWhisper" textAlignment="CENTER">
+      <font>
+         <Font name="Arial" size="48.0" />
+      </font>
+   </Text>
 </AnchorPane>
