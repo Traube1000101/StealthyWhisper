@@ -6,7 +6,7 @@ Stealthy Whisper is a ciphering tool that hides a message in another message as 
 
 ## How it works
 
-- If a secret key is provided, the message is encrypted with AES using the key
+- If a secr⁡⁤⁡⁤‌⁠⁡⁤‍​⁡⁤‍​⁡⁤‍⁠⁡⁤‍⁣⁡﻿⁢⁡‌﻿⁡‌﻿⁡⁤﻿⁤⁡⁤‌﻿⁡⁤‍‌⁡⁤‍​⁡⁤‍‌⁡‌‍⁡⁤​⁢⁡⁤​‌⁡‌﻿⁡⁤﻿⁠⁡⁤‍‍⁡⁤⁠‍⁡⁤⁣⁢⁡⁤‌⁢⁡⁤‌﻿⁡‍‌⁡⁤⁢⁠⁡⁤​﻿⁡⁤⁠﻿⁡‍⁠et key is provided, the message is encrypted with AES using the key
 - It Converts each letter of the message into their octal representation
 - The octal numbers are then turned invisible by Substitution with invisible unicode characters
 - This invisible message then gets randomly inserted into the visible message
@@ -17,6 +17,13 @@ Stealthy Whisper is a ciphering tool that hides a message in another message as 
 | Visible Message | Hidden Message | Encoded Message                 | Invisible characters replaced with visible ones |
 |:----------------|:---------------|:--------------------------------|:------------------------------------------------|
 | Hello           | Secret         | Hel⁡⁤⁡⁤⁢⁣⁡⁤​‌⁡⁤​⁣⁡⁤‍⁢⁡⁤​‌⁡⁤‍​lo | Hel&#8203;***#1#123#145#143#162#145#164***lo    |
+
+
+## How to use
+
+1. Download the newest release
+2. Install Java 17 or newer
+3. Run the JAR and have fun!
 
 
 ## License
