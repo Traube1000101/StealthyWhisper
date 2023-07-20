@@ -1,6 +1,6 @@
 <!-- README file of the StealthyWhisper project written in markdown -->
 
-# ![Wow&#8230; such Empty!](../master/src/main/resources/com/traube/stealthywhispergui/app-icon-low.png "Logo Title Text 1") StealthyWhisper
+# <img src="./src/main/resources/com/traube/stealthywhispergui/app-icon.png" alt="Wow&#8230; such Empty!" title="StealthyWhisper Icon" width="64"> StealthyWhisper
 Stealthy Whisper is a ciphering tool that hides a message in another message as invisible characters.
 
 
@@ -21,11 +21,12 @@ Stealthy Whisper is a ciphering tool that hides a message in another message as 
 
 ## How to use
 
-1. Download the newest release
+1. Download the newest [release](../../releases)
 2. Install Java 17 or newer
 3. Run the JAR and have fun!
 
 
 ## License
 
-StealthyWhisper is distributed under the [Eclipse Public License 2.0](../master/LICENSE)
+#### StealthyWhisper is distributed under the [Eclipse Public License 2.0](./LICENSE)   
+You are free to use StealthyWhisper in your own projects or redistribute it, but please give credit and link to this repo, thanks! &#128578;
