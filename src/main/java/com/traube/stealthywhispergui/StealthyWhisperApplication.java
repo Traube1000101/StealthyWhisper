@@ -14,16 +14,15 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class StealthyWhisperApplication extends Application {
+    public static final boolean DEBUG = false;
+    String version = "1.0.1";
 
     public static void main(String[] args) {
         launch(args);
     }
 
     public static FXMLLoader globalLoader;
-
     public static Stage stage;
-
-    String version = "1.0.0";
 
     @Override
     public void start(Stage stage) throws IOException {
