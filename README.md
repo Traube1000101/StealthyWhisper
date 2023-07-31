@@ -32,7 +32,7 @@ Stealthy Whisper is a ciphering tool that hides a message in another message as 
 
 ## How to use
 
-1. Download the newest [release](../../releases)
+1. Download the latest [release](../../releases)
 2. Install Java 17 or newer
 3. Run the JAR and have fun!
 
