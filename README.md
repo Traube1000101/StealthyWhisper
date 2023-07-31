@@ -39,5 +39,6 @@ Stealthy Whisper is a ciphering tool that hides a message in another message as 
 
 ## License
 
-StealthyWhisper is distributed under the [Eclipse Public License 2.0](./LICENSE)   
-##### You are free to use StealthyWhisper in your own projects, modify it or redistribute it, but please give credit and link to this repo, thanks! &#128578;
+#### StealthyWhisper is distributed under the [Eclipse Public License 2.0](./LICENSE)   
+
+Feel free to use StealthyWhisper in your own projects, modify it, or redistribute it. However, please make sure to give credit and provide a link to this repository. Thanks! &#128578;
