@@ -39,5 +39,7 @@ Stealthy Whisper ist ein Chiffrierungsprogramm welches eine Nachricht in einer a
 
 ## Lizenz
 
-StealthyWhisper wird unter der [Eclipse Public License 2.0](./LICENSE) vertrieben
-##### Du darfst StealthyWhisper in deinen eigenen Projekten verwenden, modifizieren oder weiterverteilen, aber bitte gib mir Credits und verlinke dieses Repository, Danke! &#128578;
+#### StealthyWhisper wird unter der [Eclipse Public License 2.0](./LICENSE) vertrieben
+
+Du kannst StealthyWhisper gerne in deinen eigenen Projekten verwenden, modifizieren oder weiterverteilen.  
+Allerdings wäre es super, wenn du mir Credits gibst und auf dieses Repository verlinkst. Danke! &#128578;
