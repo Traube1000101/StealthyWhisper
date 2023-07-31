@@ -44,7 +44,7 @@ Stealthy Whisper is a ciphering tool that hides a message in another message as 
 Feel free to use StealthyWhisper in your own projects, modify it, or redistribute it.  
 However, please make sure to give credit and provide a link to this repository. Thanks! &#128578;
 
-## Contributors
+## Made by
 
 <a href="../../graphs/contributors" target="_blank">
   <img src="https://contrib.rocks/image?repo=Traube1000101/StealthyWhisperGUI" />
