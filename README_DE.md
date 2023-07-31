@@ -9,7 +9,7 @@ Stealthy Whisper ist ein Chiffrierungsprogramm welches eine Nachricht in einer a
 [![CONTAINS TASTY SPAGHETTI CODE](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](../../tree/master/src/main/java/com/traube/stealthywhispergui)   
 [![MADE WITH JAVA](https://forthebadge.com/images/badges/made-with-java.svg)](https://www.java.com/)&emsp13;[![USES CSS](https://forthebadge.com/images/badges/uses-css.svg)](https://www.w3.org/Style/CSS/)&emsp13;[![USES JAVAFX](./assets/badges/USES_JAVAFX.svg)](https://openjfx.io/)
 
-###### [← Back](../../)&ensp;|&ensp;[English](./README.md)
+###### [← Back](../../#readme)&ensp;|&ensp;[English](./README.md)
 </div>
 
 ---
