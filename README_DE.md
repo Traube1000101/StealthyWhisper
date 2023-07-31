@@ -43,3 +43,9 @@ Stealthy Whisper ist ein Chiffrierungsprogramm welches eine Nachricht in einer a
 
 Du kannst StealthyWhisper gerne in deinen eigenen Projekten verwenden, modifizieren oder weiterverteilen.  
 Allerdings wäre es super, wenn du mir Credits gibst und auf dieses Repository verlinkst. Danke! &#128578;
+
+## Mitwirkende Personen
+
+<a href="../../graphs/contributors" target="_blank">
+  <img src="https://contrib.rocks/image?repo=Traube1000101/StealthyWhisperGUI" />
+</a>
