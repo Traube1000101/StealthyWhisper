@@ -1,15 +1,12 @@
 <!-- Deutsche README Datei des StealthyWhisper Projekts in markdown geschrieben -->
 <div align="center">
-
-<img src="./src/main/resources/com/traube/stealthywhispergui/app-icon.png" alt="Wow&#8230; solch Leer!" title="StealthyWhisper Icon" width="128">
-<h1>StealthyWhisper</h1>
-
-Stealthy Whisper ist ein Chiffrierungsprogramm welches eine Nachricht in einer anderen Nachricht als unsichtbare Zeichen versteckt.
-
-[![CONTAINS TASTY SPAGHETTI CODE](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](../../tree/master/src/main/java/com/traube/stealthywhispergui)   
-[![MADE WITH JAVA](https://forthebadge.com/images/badges/made-with-java.svg)](https://www.java.com/)&emsp13;[![USES CSS](https://forthebadge.com/images/badges/uses-css.svg)](https://www.w3.org/Style/CSS/)&emsp13;[![USES JAVAFX](./assets/badges/USES_JAVAFX.svg)](https://openjfx.io/)  
-<img src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white" alt="IntelliJ IDEA" title="IntelliJ IDEA" height="35">&emsp13;<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" title="Linux" height="35">&emsp13;<img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" title="Windows" height="35">
-
+    <h1><img src="./src/main/resources/com/traube/stealthywhispergui/app-icon.png" alt="Wow&#8230; such Empty!" title="StealthyWhisper Icon" width="7%" align="bottom">StealthyWhisper</h1>
+    Stealthy Whisper ist ein Chiffrierungsprogramm welches eine Nachricht in einer anderen Nachricht als unsichtbare Zeichen versteckt.
+    <br/><br/>
+    
+[![MADE WITH JAVA](https://forthebadge.com/images/badges/made-with-java.svg)](https://www.java.com/)&emsp13;<img src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white" alt="IntelliJ IDEA" title="IntelliJ IDEA" height="35">&emsp13;[![USES CSS](https://forthebadge.com/images/badges/uses-css.svg)](https://www.w3.org/Style/CSS/)&emsp13;[![USES JAVAFX](./assets/badges/USES_JAVAFX.svg)](https://openjfx.io/)  
+<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" title="Linux" height="35">&emsp13;<img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" title="Windows" height="35">&nbsp;[![CONTAINS TASTY SPAGHETTI CODE](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](../../tree/master/src/main/java/com/traube/stealthywhispergui)<br/>
+    
 ###### [← Back](./#readme)&ensp;|&ensp;[English](./README.md)
 </div>
 
