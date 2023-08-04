@@ -1,8 +1,11 @@
 <!-- English README file of the StealthyWhisper project written in markdown -->
 <div align="center">
 
-<img src="./src/main/resources/com/traube/stealthywhispergui/app-icon.png" alt="Wow&#8230; such Empty!" title="StealthyWhisper Icon" width="128">
+<img src="./src/main/resources/com/traube/stealthywhispergui/app-icon.png" alt="Wow&#8230; such Empty!" title="StealthyWhisper Icon" 
+width="13%"  
+align="left">
 <h1>StealthyWhisper</h1>
+<br clear="left>
 
 Stealthy Whisper is a ciphering tool that hides a message in another message as invisible characters.
 
@@ -18,15 +21,15 @@ Stealthy Whisper is a ciphering tool that hides a message in another message as 
 ## How it works
 
 - If a secr⁡⁤⁡⁤‌⁠⁡⁤‍​⁡⁤‍​⁡⁤‍⁠⁡⁤‍⁣⁡﻿⁢⁡‌﻿⁡‌﻿⁡⁤﻿⁤⁡⁤‌﻿⁡⁤‍‌⁡⁤‍​⁡⁤‍‌⁡‌‍⁡⁤​⁢⁡⁤​‌⁡‌﻿⁡⁤﻿⁠⁡⁤‍‍⁡⁤⁠‍⁡⁤⁣⁢⁡⁤‌⁢⁡⁤‌﻿⁡‍‌⁡⁤⁢⁠⁡⁤​﻿⁡⁤⁠﻿⁡‍⁠et key is provided, the message is encrypted with AES using the key
-- It Converts each letter of the message into their octal representation
-- The octal numbers are then turned invisible by Substitution with invisible unicode characters
+- It converts each letter of the message into their octal representation
+- The octal numbers are then turned invisible by substitution with invisible unicode characters
 - This invisible message then gets randomly inserted into the visible message
 - Prepends a byte to the message (e.g. #1 is a text message) which defines the type of message
 
 
 ## Example
 
-| Visible Message | Hidden Message | Encoded Message | octal segments made visible                |
+| Visible Message | Hidden Message | Encoded Message | Octal Segments made Visible                |
 |:----------------|:---------------|:----------------|:-------------------------------------------|
 | Hello           | Secret         | Hel⁡⁤⁡⁤⁢⁣⁡⁤​‌⁡⁤​⁣⁡⁤‍⁢⁡⁤​‌⁡⁤‍​lo           | Hel&#8203;**#1#123#145#143#162#145#164**lo |
 
@@ -43,7 +46,7 @@ Stealthy Whisper is a ciphering tool that hides a message in another message as 
 #### StealthyWhisper is distributed under the [Eclipse Public License 2.0](./LICENSE)   
 
 Feel free to use StealthyWhisper in your own projects, modify it, or redistribute it.  
-However, please make sure to give credit and provide a link to this repository. Thanks! &#128578;
+However, please make sure to give proper credit and provide a link to this repository. Thanks! &#128578;
 
 ## Made by
 
