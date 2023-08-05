@@ -1,9 +1,9 @@
-package com.traube.stealthywhispergui;
+package com.traube.stealthywhisper;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class StealthyWhisperAlgorithm {
+public class Algorithm {
     public static char[] invisibleCharacters = {
             '\u2060', // Word Joiner
             '\u2064', // Invisible Plus
@@ -35,7 +35,7 @@ public class StealthyWhisperAlgorithm {
         message = (char)type + message;
         if (!Objects.equals(cipherKey, "")) {
             // If Cipher Key is set, use it to encrypt the message
-            message = StealthyWhisperCipher.encrypt(message, cipherKey);
+            message = Cipher.encrypt(message, cipherKey);
         }
 
         // Convert input string to octal string
@@ -65,7 +65,7 @@ public class StealthyWhisperAlgorithm {
         String[] visibleMessage = new String[2];
 
         //print all segments if DEBUG is true
-        if (StealthyWhisperApplication.DEBUG) {
+        if (Application.DEBUG) {
             System.out.println("Segments:");
             segments.forEach(System.out::println);
         }
@@ -87,7 +87,7 @@ public class StealthyWhisperAlgorithm {
         String cipherKey = SettingsManager.getSetting("cipherKey", "");
         if (!Objects.equals(cipherKey, "")) {
             // If Cipher Key is set, use it to decrypt the message
-            output.set(StealthyWhisperCipher.decrypt(output.get(), cipherKey));
+            output.set(Cipher.decrypt(output.get(), cipherKey));
         }
 
         byte type = (byte)output.get().substring(0, 1).charAt(0);

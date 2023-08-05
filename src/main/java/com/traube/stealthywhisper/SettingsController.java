@@ -1,4 +1,4 @@
-package com.traube.stealthywhispergui;
+package com.traube.stealthywhisper;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import static com.traube.stealthywhispergui.StealthyWhisperApplication.globalLoader;
+import static com.traube.stealthywhisper.Application.globalLoader;
 
 public class SettingsController {
     @FXML
@@ -27,15 +27,10 @@ public class SettingsController {
     @FXML private TextField cipherKeyTextField;
     @FXML private ChoiceBox languageSelector;
 
-    // Variables for switching scenes
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     private final List<Locale> supportedLocales = new ArrayList<>();
 
     @FXML
-    public void initialize() throws NoSuchFieldException, IllegalAccessException {
+    public void initialize() {
         anchorPane.setOnMouseClicked(event -> anchorPane.requestFocus());
 
         cipherKeyTextField.setText(SettingsManager.getSetting("cipherKey", ""));
@@ -104,10 +99,11 @@ public class SettingsController {
 
         globalLoader.setResources(ResourceBundle.getBundle("com.traube.bundles.lang", locale));
         globalLoader.setLocation(Objects.requireNonNull(getClass().getResource("stealthy-whisper.fxml")));
-        root = globalLoader.load();
+        Parent root = globalLoader.load();
 
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        // Variables for switching scenes
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

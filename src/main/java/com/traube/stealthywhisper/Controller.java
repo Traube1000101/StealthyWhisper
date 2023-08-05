@@ -1,4 +1,4 @@
-package com.traube.stealthywhispergui;
+package com.traube.stealthywhisper;
 
 import java.awt.datatransfer.StringSelection;
 import java.awt.Toolkit;
@@ -22,20 +22,15 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import static com.traube.stealthywhispergui.StealthyWhisperApplication.globalLoader;
+import static com.traube.stealthywhisper.Application.globalLoader;
 
-public class StealthyWhisperController {
+public class Controller {
     @FXML AnchorPane anchorPane;
 
     @FXML private TextField encodedMessageTextField;
     @FXML private TextField visibleMessageTextField;
     @FXML private TextField hiddenMessageTextField;
 
-
-    // Variables for switching scenes
-    private static Stage stage;
-    private static Scene scene;
-    private static Parent root;
 
     @FXML public void initialize() {
         anchorPane.setOnMouseClicked(event -> anchorPane.requestFocus());
@@ -54,7 +49,7 @@ public class StealthyWhisperController {
         hiddenMessageTextField.pseudoClassStateChanged(errorClass, hiddenMessage.isEmpty());
 
         if (!(visibleMessage.isEmpty() || hiddenMessage.isEmpty())) {
-            encodedMessageTextField.setText(StealthyWhisperAlgorithm.insertMessage(visibleMessage, StealthyWhisperAlgorithm.encodeMessage(hiddenMessage, (byte)1)));
+            encodedMessageTextField.setText(Algorithm.insertMessage(visibleMessage, Algorithm.encodeMessage(hiddenMessage, (byte)1)));
         }
     }
 
@@ -69,7 +64,7 @@ public class StealthyWhisperController {
             encodedMessageTextField.pseudoClassStateChanged(errorClass, false);
             String encodedMessage = encodedMessageTextField.getText();
             try {
-                String[] messages = StealthyWhisperAlgorithm.decodeMessage(encodedMessage);
+                String[] messages = Algorithm.decodeMessage(encodedMessage);
                 hiddenMessageTextField.setText(messages[0]);
                 visibleMessageTextField.setText(messages[1]);
             }
@@ -105,10 +100,11 @@ public class StealthyWhisperController {
         globalLoader = new FXMLLoader();
         ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
         globalLoader.setResources(langBundle);
-        globalLoader.setLocation(Objects.requireNonNull(StealthyWhisperController.class.getResource("settings.fxml")));
-        root = globalLoader.load();
+        globalLoader.setLocation(Objects.requireNonNull(Controller.class.getResource("settings.fxml")));
+            Parent root = globalLoader.load();
 
-        stage = new Stage();
+            // Variables for switching scenes
+            Stage stage = new Stage();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         /* // Use when triggered by menu item instead of button
@@ -120,7 +116,7 @@ public class StealthyWhisperController {
         }
          */
 
-        scene = new Scene(root);
+            Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         } catch (IOException e) {
@@ -160,7 +156,7 @@ public class StealthyWhisperController {
         alert.setHeaderText(headerMessage);
         alert.setContentText(infoMessage);
         // add icon to alert box
-        Image icon = new Image(Objects.requireNonNull(StealthyWhisperController.class.getResourceAsStream("app-icon.png")));
+        Image icon = new Image(Objects.requireNonNull(Controller.class.getResourceAsStream("app-icon.png")));
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(icon);
 

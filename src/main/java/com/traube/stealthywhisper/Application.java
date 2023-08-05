@@ -1,7 +1,6 @@
-package com.traube.stealthywhispergui;
+package com.traube.stealthywhisper;
 
 import javafx.fxml.FXMLLoader;
-import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -13,16 +12,15 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class StealthyWhisperApplication extends Application {
+public class Application extends javafx.application.Application {
     public static final boolean DEBUG = false;
-    String version = "1.0.1";
+    public static final String version = "1.0.1";
 
     public static void main(String[] args) {
         launch(args);
     }
 
     public static FXMLLoader globalLoader;
-    public static Stage stage;
 
     @Override
     public void start(Stage stage) throws IOException {

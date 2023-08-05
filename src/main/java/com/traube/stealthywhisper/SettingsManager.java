@@ -1,9 +1,9 @@
-package com.traube.stealthywhispergui;
+package com.traube.stealthywhisper;
 
 import java.util.prefs.Preferences;
 
 public class SettingsManager {
-    private static final String preferenceId = "com.traube.stealthywhispergui";
+    private static final String preferenceId = "com.traube.stealthywhisper";
 
     public static void saveSetting(String key, String value) {
         Preferences preferences = Preferences.userRoot().node(preferenceId);
