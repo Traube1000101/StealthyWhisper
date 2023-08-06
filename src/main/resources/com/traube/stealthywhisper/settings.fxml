@@ -10,16 +10,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.traube.stealthywhisper.SettingsController">
-   <Button alignment="TOP_LEFT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="540.0" layoutY="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#switchToMain" styleClass="settings-button" stylesheets="@stealthy-whisper.css" text="Settings">
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-      <font>
-         <Font size="1.0" />
-      </font>
-   </Button>
-   <TextField fx:id="cipherKeyTextField" layoutX="30.0" layoutY="120.0" prefHeight="30.0" prefWidth="540.0" promptText="%settings.prompt.secret_key" styleClass="input-text-field" stylesheets="@stealthy-whisper.css">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.traube.stealthywhisper.SettingsController">
+   <TextField fx:id="cipherKeyTextField" prefHeight="30.0" prefWidth="400.0" promptText="%settings.prompt.secret_key" styleClass="input-text-field" stylesheets="@stealthy-whisper.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="55.0">
       <cursor>
          <Cursor fx:constant="TEXT" />
       </cursor>
@@ -27,26 +19,44 @@
          <Font name="Arial" size="14.0" />
       </font>
    </TextField>
-   <Text layoutX="30.0" layoutY="115.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="%settings.text.secret_key">
+   <Text stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="%settings.text.secret_key" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
       <font>
          <Font name="Arial" size="16.0" />
       </font>
    </Text>
-   <HBox layoutX="30.0" layoutY="163.0" prefHeight="30.0" prefWidth="540.0" spacing="20.0">
-      <Text stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="%settings.text.language_selector"
-            textOrigin="CENTER">
+   <HBox layoutX="30.0" layoutY="163.0" maxHeight="30.0" spacing="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="115.0">
+      <Text stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="%settings.text.language_selector" textOrigin="CENTER" wrappingWidth="80.0">
          <font>
-            <Font name="Arial" size="16.0"/>
+            <Font name="Arial" size="16.0" />
          </font>
          <HBox.margin>
-            <Insets top="6.0"/>
+            <Insets top="6.0" />
          </HBox.margin>
       </Text>
-      <ChoiceBox fx:id="languageSelector" prefHeight="30.0" prefWidth="400.0"/>
+      <ChoiceBox fx:id="languageSelector" prefHeight="30.0" prefWidth="300.0" HBox.hgrow="ALWAYS" />
+      <padding>
+         <Insets bottom="30.0" />
+      </padding>
    </HBox>
-   <Text layoutX="125.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StealthyWhisper" textAlignment="CENTER">
-      <font>
-         <Font name="Arial" size="48.0" />
-      </font>
-   </Text>
+   <HBox layoutX="11.0" layoutY="226.0" prefHeight="30.0" prefWidth="400.0" spacing="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="175.0">
+         <Button mnemonicParsing="false" onAction="#saveSettings" prefHeight="30.0" prefWidth="500.0" text="%settings.button.save">
+            <font>
+               <Font name="Arial" size="16.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#closeSettings" prefHeight="30.0" prefWidth="500.0" text="%settings.button.close">
+            <font>
+               <Font name="Arial" size="16.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+      <padding>
+         <Insets bottom="30.0" />
+      </padding>
+   </HBox>
 </AnchorPane>

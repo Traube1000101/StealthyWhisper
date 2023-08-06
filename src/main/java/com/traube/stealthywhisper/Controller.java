@@ -13,16 +13,16 @@ import javafx.css.PseudoClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import static com.traube.stealthywhisper.Application.globalLoader;
+import static com.traube.stealthywhisper.Application.version;
 
 public class Controller {
     @FXML AnchorPane anchorPane;
@@ -69,7 +69,7 @@ public class Controller {
                 visibleMessageTextField.setText(messages[1]);
             }
             catch (Exception e) {
-                infoBox(e.getMessage(), "Error");
+                infoBox("Error", e.getMessage(), Alert.AlertType.ERROR);
             }
         }
     }
@@ -87,38 +87,42 @@ public class Controller {
         encodedMessageTextField.pseudoClassStateChanged(errorClass, false);
     }
 
-    public void switchToSettings(ActionEvent event) {
-            loadScene(event, getClass().getResource("settings.fxml"));
+    public void openSettings() {
+            loadScene(getClass().getResource("settings.fxml"));
     }
 
     public static void loadScene(ActionEvent event, URL sceneUrl) {
         try {
+            // Switch to settings scene
+            Locale locale = new Locale(SettingsManager.getSetting("locale", Locale.getDefault().getCountry()));
 
-        // Switch to settings scene
-        Locale locale = new Locale(SettingsManager.getSetting("locale", Locale.getDefault().getCountry()));
-
-        globalLoader = new FXMLLoader();
-        ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
-        globalLoader.setResources(langBundle);
-        globalLoader.setLocation(Objects.requireNonNull(Controller.class.getResource("settings.fxml")));
+            globalLoader = new FXMLLoader();
+            ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
+            globalLoader.setResources(langBundle);
+            globalLoader.setLocation(Objects.requireNonNull(sceneUrl));
             Parent root = globalLoader.load();
 
-            // Variables for switching scenes
             Stage stage = new Stage();
+            Image icon = new Image(Objects.requireNonNull(Controller.class.getResourceAsStream("app-icon.png")));
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        /* // Use when triggered by menu item instead of button
-        if (event != null) {
-            MenuItem menuItem = (MenuItem) event.getSource();
-            scene = menuItem.getParentPopup().getOwnerWindow().getScene();
-            stage = (Stage) scene.getWindow();
+            stage.getIcons().add(icon);
+            stage.setTitle("Settings");
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.UTILITY);
 
-        }
-         */
+            //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            /* // Use when triggered by menu item instead of button
+            if (event != null) {
+                MenuItem menuItem = (MenuItem) event.getSource();
+                scene = menuItem.getParentPopup().getOwnerWindow().getScene();
+                stage = (Stage) scene.getWindow();
+
+            }
+             */
 
             Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             Throwable cause = e.getCause();
             cause.printStackTrace();
@@ -142,24 +146,36 @@ public class Controller {
         clipboard.setContents(stringSelection, null);
     }
 
-    public static void infoBox(String infoMessage, String titleBar)
+    public static void infoBox(String titleBar, String infoMessage, String headerMessage, Alert.AlertType infoBoxType)
     {
-        /* By specifying a null headerMessage String, we cause the dialog to
-           not have a header */
-        infoBox(infoMessage, titleBar, null);
-    }
-
-    public static void infoBox(String infoMessage, String titleBar, String headerMessage)
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(infoBoxType);
         alert.setTitle(titleBar);
         alert.setHeaderText(headerMessage);
         alert.setContentText(infoMessage);
+        alert.getButtonTypes().add(new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE));
+
         // add icon to alert box
         Image icon = new Image(Objects.requireNonNull(Controller.class.getResourceAsStream("app-icon.png")));
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(icon);
 
         alert.showAndWait();
+    }
+    public static void infoBox(String titleBar, String infoMessage, Alert.AlertType infoBoxType)
+    {
+        /* By specifying a null headerMessage String, we cause the dialog to
+           not have a header */
+        infoBox(titleBar, infoMessage, null, infoBoxType);
+    }
+
+    public void exitApplication(ActionEvent event) {
+        Stage stage;
+        MenuItem menuItem = (MenuItem) event.getSource();
+        stage = (Stage) menuItem.getParentPopup().getOwnerWindow().getScene().getWindow();
+        stage.close();
+    }
+
+    public void openAbout() {
+        infoBox("About", "StealthyWhisper\nVersion:\t\t" + version + "\nCreated by:\tTraube", Alert.AlertType.NONE);
     }
 }

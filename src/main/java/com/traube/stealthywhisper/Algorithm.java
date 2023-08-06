@@ -99,7 +99,5 @@ public class Algorithm {
             ResourceBundle langBundle = ResourceBundle.getBundle("com.traube.bundles.lang", locale);
             throw new Exception(langBundle.getString("general.error.unsupported_message_type"));
         }
-
-
     }
 }
