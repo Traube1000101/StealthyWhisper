@@ -30,7 +30,7 @@
 
 ## Wie benutze ich es
 
-1. Lade das neueste [Release](../../releases) herunter
+1. Lade das neueste [Release](../../releases/latest) herunter
 2. Es wird Java 17 oder neuer benötigt
 4. Führe die JAR aus und hab Spaß!
 
